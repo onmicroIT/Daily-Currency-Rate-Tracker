@@ -29,7 +29,7 @@ async function ensureDataDir() {
 }
 
 async function fetchAllRates() {
-  console.log('Fetching latest USD exchange rates for multiple currencies...');
+  console.log('Fetching latest USD exchange rates...');
   const response = await fetch(API_URL);
   if (!response.ok) {
     throw new Error(`API request failed: ${response.status} ${response.statusText}`);
@@ -45,9 +45,7 @@ async function fetchAllRates() {
     const rate = data.rates[curr.code];
     if (rate) {
       rates[curr.code] = parseFloat(rate.toFixed(4));
-      console.log(`Fetched rate: 1 USD = ${rates[curr.code]} ${curr.code}`);
-    } else {
-      console.warn(`Rate for ${curr.code} not found`);
+      console.log(`Fetched: 1 USD = ${rates[curr.code]} ${curr.code}`);
     }
   });
 
@@ -60,9 +58,7 @@ async function loadHistory(currency) {
     const jsonData = await fs.readFile(jsonFile, 'utf8');
     return JSON.parse(jsonData);
   } catch (error) {
-    if (error.code === 'ENOENT') {
-      return [];
-    }
+    if (error.code === 'ENOENT') return [];
     throw error;
   }
 }
@@ -71,13 +67,10 @@ async function saveHistory(currency, history) {
   const jsonFile = path.join(DATA_DIR, `history-${currency.toLowerCase()}.json`);
   const csvFile = path.join(DATA_DIR, `history-${currency.toLowerCase()}.csv`);
   
-  // Sort by date
   history.sort((a, b) => a.date.localeCompare(b.date));
   
-  // Save JSON
   await fs.writeFile(jsonFile, JSON.stringify(history, null, 2));
   
-  // Save CSV
   let csvContent = 'date,usd_to_' + currency.toLowerCase() + '\n';
   history.forEach(entry => {
     csvContent += `${entry.date},${entry.rate}\n`;
@@ -88,300 +81,134 @@ async function saveHistory(currency, history) {
 }
 
 function getTodayDate() {
-  const now = new Date();
-  return now.toISOString().split('T')[0]; // YYYY-MM-DD
+  return new Date().toISOString().split('T')[0];
 }
 
 async function updateHistory(history, today, rate, currency) {
   const existingIndex = history.findIndex(entry => entry.date === today);
-  
   if (existingIndex !== -1) {
     history[existingIndex].rate = rate;
-    console.log(`Updated existing entry for ${today} (${currency})`);
   } else {
-    history.push({ date: today, rate: rate });
-    console.log(`Added new entry for ${today} (${currency})`);
+    history.push({ date: today, rate });
   }
-  
   return history;
 }
 
 function calculateStats(history) {
-  if (history.length === 0) {
-    return {
-      totalRecords: 0,
-      latestRate: null,
-      highestRate: null,
-      lowestRate: null,
-      averageRate: null
-    };
-  }
+  if (history.length === 0) return { totalRecords: 0, latestRate: 0, highestRate: 0, lowestRate: 0, averageRate: 0 };
   
   const rates = history.map(h => h.rate);
-  const latest = history[history.length - 1];
-  
   return {
     totalRecords: history.length,
-    latestRate: latest.rate,
+    latestRate: rates[rates.length - 1],
     highestRate: Math.max(...rates),
     lowestRate: Math.min(...rates),
-    averageRate: parseFloat((rates.reduce((sum, r) => sum + r, 0) / rates.length).toFixed(4))
+    averageRate: parseFloat((rates.reduce((a, b) => a + b, 0) / rates.length).toFixed(4))
   };
 }
 
-function generateTrendSVG(history, currencyCode, currencyName) {
+function generateTrendSVG(history, currencyCode) {
   if (history.length === 0) {
-    return `<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg"><text x="400" y="150" text-anchor="middle" fill="#666">No data available for ${currencyCode} yet</text></svg>`;
+    return `<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg"><text x="400" y="150" text-anchor="middle" fill="#666">No data yet for ${currencyCode}</text></svg>`;
   }
 
-  // Get last 30 days
   const last30 = history.slice(-30);
-  if (last30.length === 0) last30 = history;
-
   const rates = last30.map(h => h.rate);
   const minRate = Math.min(...rates);
   const maxRate = Math.max(...rates);
   const range = maxRate - minRate || 1;
 
-  const width = 800;
-  const height = 300;
-  const padding = 50;
-
-  let svg = `
-<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa; border:1px solid #ddd; border-radius:8px;">
-  <defs>
-    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#3b82f6"/>
-      <stop offset="100%" stop-color="#1e40af"/>
-    </linearGradient>
-  </defs>
-  
-  <!-- Grid lines -->
-  <line x1="${padding}" y1="${padding}" x2="${width - padding}" y2="${padding}" stroke="#e5e7eb" stroke-width="1"/>
-  <line x1="${padding}" y1="${height - padding}" x2="${width - padding}" y2="${height - padding}" stroke="#e5e7eb" stroke-width="1"/>
-`;
-
-  // Y-axis labels
-  const yLabels = 5;
-  for (let i = 0; i <= yLabels; i++) {
-    const y = padding + (height - 2 * padding) * (i / yLabels);
-    const val = (maxRate - (range * i / yLabels)).toFixed(2);
-    svg += `<text x="${padding - 10}" y="${y + 4}" text-anchor="end" font-size="12" fill="#666">${val}</text>\n`;
-  }
-
-  // X-axis (dates)
-  const points = [];
-  for (let i = 0; i < last30.length; i++) {
-    const x = padding + (width - 2 * padding) * (i / Math.max(1, last30.length - 1));
-    const normalizedY = (maxRate - last30[i].rate) / range;
-    const y = padding + (height - 2 * padding) * normalizedY;
-    
-    points.push(`${x},${y}`);
-    
-    // Data points
-    svg += `<circle cx="${x}" cy="${y}" r="3" fill="#3b82f6" stroke="#fff" stroke-width="2"/>\n`;
-  }
+  const width = 800, height = 300, padding = 50;
+  let svg = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;">`;
 
   // Line
-  svg += `<polyline points="${points.join(' ')}" fill="none" stroke="url(#lineGradient)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>\n`;
+  let points = [];
+  for (let i = 0; i < last30.length; i++) {
+    const x = padding + (width - 2 * padding) * (i / Math.max(1, last30.length - 1));
+    const y = padding + (height - 2 * padding) * ((maxRate - last30[i].rate) / range);
+    points.push(`${x},${y}`);
+    svg += `<circle cx="${x}" cy="${y}" r="4" fill="#3b82f6"/>`;
+  }
+  svg += `<polyline points="${points.join(' ')}" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>`;
 
-  // Title and labels
-  svg += `
-  <text x="${width/2}" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">USD to ${currencyCode} - Last 30 Days Trend</text>
-  <text x="${width/2}" y="${height - 15}" text-anchor="middle" font-size="12" fill="#666">Date →</text>
-`;
-
+  svg += `<text x="${width/2}" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to ${currencyCode} - 30 Days Trend</text>`;
   svg += '</svg>';
-  return svg.trim();
+  return svg;
 }
 
 async function updateReadme(allStats, today) {
-  let readmeContent;
-  try {
-    readmeContent = await fs.readFile(README_FILE, 'utf8');
-  } catch (error) {
-    if (error.code === 'ENOENT') {
-      readmeContent = '# Daily Multi-Currency USD Exchange Rate Tracker\n\n';
-    } else {
-      throw error;
-    }
+  let content = await fs.readFile(README_FILE, 'utf8').catch(() => '# Daily Multi-Currency USD Tracker\n');
+  
+  const start = '<!-- EXCHANGE-RATE-START -->';
+  const end = '<!-- EXCHANGE-RATE-END -->';
+  
+  let section = `\n## 💱 Multi-Currency USD Exchange Rates\n\n**Last Updated:** ${today}\n\n`;
+  
+  for (const [code, data] of Object.entries(allStats)) {
+    section += `### ${data.currency.name} (${code})\n**1 USD = ${data.rate} ${code}**\n\n`;
+    section += generateTrendSVG(data.history, code) + '\n\n';
   }
   
-  const startMarker = '<!-- EXCHANGE-RATE-START -->';
-  const endMarker = '<!-- EXCHANGE-RATE-END -->';
+  section += `**Project Status:** Active ✅\n\n`;
   
-  let section = `
-## 💱 Multi-Currency USD Exchange Rates
-
-**Last Updated:** ${today}  
-
-### Current Rates
-`;
-
-  for (const [code, data] of Object.entries(allStats)) {
-    const curr = data.currency;
-    section += `- **1 USD = ${data.rate} ${code}** (${curr.name})\n`;
-  }
-
-  section += `
-
-### 30-Day Trend Charts
-`;
-
-  for (const [code, data] of Object.entries(allStats)) {
-    const curr = data.currency;
-    const svgChart = generateTrendSVG(data.history, code, curr.name);
-    section += `
-#### ${curr.name} (${code})
-${svgChart}
-`;
-  }
-
-  section += `
-
-### Summary Statistics
-| Currency | Latest Rate | Highest | Lowest | Average | Records |
-|----------|-------------|---------|--------|---------|---------|
-`;
-
-  for (const [code, data] of Object.entries(allStats)) {
-    const s = data.stats;
-    section += `| ${code} | ${s.latestRate} | ${s.highestRate} | ${s.lowestRate} | ${s.averageRate} | ${s.totalRecords} |\n`;
-  }
-
-  section += `
-
-**Project Status:** Active ✅
-
-*Data automatically updated daily via GitHub Actions. Supports BDT, INR, CNY, EUR, CAD, AUD.*
-`;
-
-  // Replace or insert the section
-  const regex = new RegExp(`${startMarker}[\\s\\S]*?${endMarker}`, 'g');
-  
-  if (readmeContent.includes(startMarker) && readmeContent.includes(endMarker)) {
-    readmeContent = readmeContent.replace(regex, `${startMarker}${section}${endMarker}`);
+  const regex = new RegExp(`${start}[\\s\\S]*?${end}`, 'g');
+  if (content.includes(start)) {
+    content = content.replace(regex, `${start}${section}${end}`);
   } else {
-    readmeContent += `\n${startMarker}${section}${endMarker}\n`;
+    content += `${start}${section}${end}`;
   }
   
-  await fs.writeFile(README_FILE, readmeContent.trim());
-  console.log('Updated README.md with multi-currency statistics and charts');
+  await fs.writeFile(README_FILE, content.trim());
+  console.log('✅ README.md updated');
 }
 
 async function generateDashboard(allStats, today) {
-  let cardsHTML = '';
-
+  let cards = '';
   for (const [code, data] of Object.entries(allStats)) {
-    const curr = data.currency;
     const stats = data.stats;
-    const history = data.history;
-    const last30 = history.slice(-30);
-    const svgChart = generateTrendSVG(history, code, curr.name);
-
-    cardsHTML += `
+    cards += `
     <div class="card">
-        <h2>${curr.name} (${code})</h2>
-        <div class="rate">1 USD = ${data.rate} ${code}</div>
-        <p class="last-updated">Last Updated: ${today}</p>
-        
-        <h3>30-Day Trend</h3>
-        ${svgChart}
-        
-        <h3>Key Statistics</h3>
-        <ul>
-            <li><strong>Total Records:</strong> ${stats.totalRecords}</li>
-            <li><strong>Highest:</strong> ${stats.highestRate} ${code}</li>
-            <li><strong>Lowest:</strong> ${stats.lowestRate} ${code}</li>
-            <li><strong>Average:</strong> ${stats.averageRate} ${code}</li>
-        </ul>
-        
-        <h3>Recent History (Last 10 Days)</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Rate (${code})</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${last30.slice(-10).reverse().map(entry => `
-                    <tr>
-                        <td>${entry.date}</td>
-                        <td><strong>${entry.rate}</strong></td>
-                    </tr>
-                `).join('')}
-            </tbody>
-        </table>
+      <h2>${data.currency.name} (${code})</h2>
+      <div class="rate">1 USD = ${data.rate} ${code}</div>
+      <p class="last-updated">Last Updated: ${today}</p>
+      ${generateTrendSVG(data.history, code)}
+      <h3>Statistics</h3>
+      <ul>
+        <li>Total Records: ${stats.totalRecords}</li>
+        <li>Highest: ${stats.highestRate}</li>
+        <li>Lowest: ${stats.lowestRate}</li>
+        <li>Average: ${stats.averageRate}</li>
+      </ul>
     </div>`;
   }
 
-  const htmlContent = `<!DOCTYPE html>
+  const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Currency USD Exchange Rate Dashboard</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #f8fafc;
-            color: #1e2937;
-        }
-        h1 { color: #1e40af; text-align: center; }
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-        }
-        .rate {
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: #3b82f6;
-        }
-        svg { width: 100%; max-width: 800px; margin: 15px auto; display: block; }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        th { background: #f1f5f9; }
-        .last-updated { text-align: center; color: #64748b; font-style: italic; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Currency USD Dashboard</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background: #f8fafc; }
+    .card { background: white; border-radius: 12px; padding: 20px; margin: 20px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .rate { font-size: 2.5rem; font-weight: bold; color: #2563eb; }
+    svg { max-width: 100%; height: auto; }
+  </style>
 </head>
 <body>
-    <h1>💱 Multi-Currency USD Exchange Rate Dashboard</h1>
-    <p style="text-align:center; color:#64748b;">Last Updated: ${today}</p>
-    
-    ${cardsHTML}
-
-    <footer style="text-align:center; margin-top:60px; color:#64748b; font-size:0.9rem;">
-        <p>Automated with ❤️ using GitHub Actions • Powered by open.er-api.com</p>
-        <p><a href="https://github.com/yourusername/daily-usd-to-bdt-tracker" style="color:#3b82f6;">View Source on GitHub</a></p>
-    </footer>
+  <h1>💱 Multi-Currency USD Exchange Rate Dashboard</h1>
+  <p style="text-align:center;color:#666;">Last Updated: ${today}</p>
+  ${cards}
 </body>
 </html>`;
 
-  await fs.writeFile(INDEX_HTML, htmlContent);
-  console.log('Generated GitHub Pages multi-currency dashboard: index.html');
+  await fs.writeFile(INDEX_HTML, html);
+  console.log('✅ index.html (GitHub Pages dashboard) generated');
 }
 
 async function main() {
   try {
-    console.log('🚀 Starting Multi-Currency USD Exchange Rate Tracker');
-    
     await ensureDataDir();
-    
     const today = getTodayDate();
     const rates = await fetchAllRates();
     
@@ -398,15 +225,12 @@ async function main() {
       
       const stats = calculateStats(history);
       allStats[code] = { stats, history, rate, currency: curr };
-      
-      console.log(`✅ Processed ${code}: ${rate} | Records: ${stats.totalRecords}`);
     }
     
     await updateReadme(allStats, today);
     await generateDashboard(allStats, today);
     
-    console.log('✅ Successfully updated all currencies, README, and GitHub Pages dashboard');
-    
+    console.log('🎉 All updates completed successfully!');
   } catch (error) {
     console.error('❌ Error:', error.message);
     process.exit(1);

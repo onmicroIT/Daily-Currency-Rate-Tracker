@@ -1,18 +1,17 @@
-name: Daily USD to BDT Exchange Rate Update
+name: Daily USD Multi-Currency Exchange Rate Update
 
 permissions:
   contents: write
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # Daily at 06:00 UTC
-  workflow_dispatch:     # Manual trigger support
+    - cron: '0 6 * * *'   # Daily at 06:00 UTC
+  workflow_dispatch:
 
 jobs:
   update-rate:
     runs-on: ubuntu-latest
     
-    # Prevent concurrent runs
     concurrency:
       group: daily-exchange-rate
       cancel-in-progress: false
@@ -34,27 +33,21 @@ jobs:
         run: npm ci
 
       - name: Run exchange rate update
-        id: update
-        continue-on-error: false
         run: node update-rate.js
 
       - name: Commit and push changes
-        if: steps.update.outcome == 'success'
         run: |
-          git config --global user.name "onmicroIT"
-          git config --global user.email "kartik@itcommunication.onmicrosoft.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          # Pull latest to avoid conflicts
           git pull origin main --rebase || true
           
-          # Stage files
-          git add data/history.json data/history.csv README.md 2>/dev/null || true
+          git add data/*.json data/*.csv README.md index.html 2>/dev/null || true
           
-          # Check for changes and commit only if there are any
           if ! git diff --cached --quiet; then
             git commit -m "chore: update daily exchange rate"
             git push origin main
-            echo "✅ Changes committed and pushed"
+            echo "Changes committed"
           else
-            echo "✅ No changes to commit"
+            echo "No changes to commit"
           fi
