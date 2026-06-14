@@ -22,33 +22,46 @@ Automatically tracks daily USD exchange rates to **BDT, INR, CNY, EUR, CAD, AUD*
 
 **Last Updated:** 2026-06-14
 
-### Bangladesh Taka (BDT)
-**1 USD = 122.9387 BDT**
+### 📊 Current Rates Summary
+
+| Currency | Code | Current Rate (1 USD) | 30-Day High | 30-Day Low | Average |
+|----------|------|----------------------|-------------|------------|---------|
+| Bangladesh Taka | BDT | **122.9387** | 122.9387 | 122.9387 | 122.9387 |
+| Indian Rupee | INR | **95.2997** | 95.2997 | 95.2997 | 95.2997 |
+| Chinese Yuan | CNY | **6.7817** | 6.7817 | 6.7817 | 6.7817 |
+| Euro | EUR | **0.8645** | 0.8645 | 0.8645 | 0.8645 |
+| Canadian Dollar | CAD | **1.3982** | 1.3982 | 1.3982 | 1.3982 |
+| Australian Dollar | AUD | **1.4203** | 1.4203 | 1.4203 | 1.4203 |
+
+### 📈 30-Day Trend Charts
+
+#### Bangladesh Taka (BDT)
+**Current Rate:** 1 USD = **122.9387** BDT
 
 <svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;"><circle cx="50" cy="50" r="4" fill="#3b82f6"/><polyline points="50,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to BDT - 30 Days Trend</text></svg>
 
-### Indian Rupee (INR)
-**1 USD = 95.2997 INR**
+#### Indian Rupee (INR)
+**Current Rate:** 1 USD = **95.2997** INR
 
 <svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;"><circle cx="50" cy="50" r="4" fill="#3b82f6"/><polyline points="50,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to INR - 30 Days Trend</text></svg>
 
-### Chinese Yuan (CNY)
-**1 USD = 6.7817 CNY**
+#### Chinese Yuan (CNY)
+**Current Rate:** 1 USD = **6.7817** CNY
 
 <svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;"><circle cx="50" cy="50" r="4" fill="#3b82f6"/><polyline points="50,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to CNY - 30 Days Trend</text></svg>
 
-### Euro (EUR)
-**1 USD = 0.8645 EUR**
+#### Euro (EUR)
+**Current Rate:** 1 USD = **0.8645** EUR
 
 <svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;"><circle cx="50" cy="50" r="4" fill="#3b82f6"/><polyline points="50,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to EUR - 30 Days Trend</text></svg>
 
-### Canadian Dollar (CAD)
-**1 USD = 1.3982 CAD**
+#### Canadian Dollar (CAD)
+**Current Rate:** 1 USD = **1.3982** CAD
 
 <svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;"><circle cx="50" cy="50" r="4" fill="#3b82f6"/><polyline points="50,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to CAD - 30 Days Trend</text></svg>
 
-### Australian Dollar (AUD)
-**1 USD = 1.4203 AUD**
+#### Australian Dollar (AUD)
+**Current Rate:** 1 USD = **1.4203** AUD
 
 <svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;"><circle cx="50" cy="50" r="4" fill="#3b82f6"/><polyline points="50,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to AUD - 30 Days Trend</text></svg>
 
