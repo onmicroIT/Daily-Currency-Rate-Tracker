@@ -1,18 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Currency USD Exchange Rate Dashboard</title>
-    <style>
-        body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background: #f8fafc; }
-        h1 { color: #2563eb; text-align: center; }
-        .card { background: white; border-radius: 12px; padding: 20px; margin: 20px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .rate { font-size: 2.5rem; font-weight: bold; color: #2563eb; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Currency USD Dashboard</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background: #f8fafc; }
+    .card { background: white; border-radius: 12px; padding: 20px; margin: 20px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .rate { font-size: 2.5rem; font-weight: bold; color: #2563eb; }
+    svg { max-width: 100%; height: auto; }
+  </style>
 </head>
 <body>
-    <h1>💱 Multi-Currency USD Exchange Rate Dashboard</h1>
-    <p style="text-align:center;color:#666;">The dashboard is generated automatically every day by update-rate.js</p>
+  <h1>💱 Multi-Currency USD Exchange Rate Dashboard</h1>
+  <p style="text-align:center;color:#666;">Last Updated: 2026-06-14</p>
+  
+    <div class="card">
+      <h2>Bangladesh Taka (BDT)</h2>
+      <div class="rate">1 USD = 122.9387 BDT</div>
+      <p class="last-updated">Last Updated: 2026-06-14</p>
+      <svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;"><circle cx="50" cy="50" r="4" fill="#3b82f6"/><polyline points="50,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to BDT - 30 Days Trend</text></svg>
+      <h3>Statistics</h3>
+      <ul>
+        <li>Total Records: 1</li>
+        <li>Highest: 122.9387</li>
+        <li>Lowest: 122.9387</li>
+        <li>Average: 122.9387</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Indian Rupee (INR)</h2>
+      <div class="rate">1 USD = 95.2997 INR</div>
+      <p class="last-updated">Last Updated: 2026-06-14</p>
+      <svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;"><circle cx="50" cy="50" r="4" fill="#3b82f6"/><polyline points="50,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to INR - 30 Days Trend</text></svg>
+      <h3>Statistics</h3>
+      <ul>
+        <li>Total Records: 1</li>
+        <li>Highest: 95.2997</li>
+        <li>Lowest: 95.2997</li>
+        <li>Average: 95.2997</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Chinese Yuan (CNY)</h2>
+      <div class="rate">1 USD = 6.7817 CNY</div>
+      <p class="last-updated">Last Updated: 2026-06-14</p>
+      <svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;"><circle cx="50" cy="50" r="4" fill="#3b82f6"/><polyline points="50,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to CNY - 30 Days Trend</text></svg>
+      <h3>Statistics</h3>
+      <ul>
+        <li>Total Records: 1</li>
+        <li>Highest: 6.7817</li>
+        <li>Lowest: 6.7817</li>
+        <li>Average: 6.7817</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Euro (EUR)</h2>
+      <div class="rate">1 USD = 0.8645 EUR</div>
+      <p class="last-updated">Last Updated: 2026-06-14</p>
+      <svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;"><circle cx="50" cy="50" r="4" fill="#3b82f6"/><polyline points="50,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to EUR - 30 Days Trend</text></svg>
+      <h3>Statistics</h3>
+      <ul>
+        <li>Total Records: 1</li>
+        <li>Highest: 0.8645</li>
+        <li>Lowest: 0.8645</li>
+        <li>Average: 0.8645</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Canadian Dollar (CAD)</h2>
+      <div class="rate">1 USD = 1.3982 CAD</div>
+      <p class="last-updated">Last Updated: 2026-06-14</p>
+      <svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;"><circle cx="50" cy="50" r="4" fill="#3b82f6"/><polyline points="50,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to CAD - 30 Days Trend</text></svg>
+      <h3>Statistics</h3>
+      <ul>
+        <li>Total Records: 1</li>
+        <li>Highest: 1.3982</li>
+        <li>Lowest: 1.3982</li>
+        <li>Average: 1.3982</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Australian Dollar (AUD)</h2>
+      <div class="rate">1 USD = 1.4203 AUD</div>
+      <p class="last-updated">Last Updated: 2026-06-14</p>
+      <svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;"><circle cx="50" cy="50" r="4" fill="#3b82f6"/><polyline points="50,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to AUD - 30 Days Trend</text></svg>
+      <h3>Statistics</h3>
+      <ul>
+        <li>Total Records: 1</li>
+        <li>Highest: 1.4203</li>
+        <li>Lowest: 1.4203</li>
+        <li>Average: 1.4203</li>
+      </ul>
+    </div>
 </body>
 </html>

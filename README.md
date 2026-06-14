@@ -20,184 +20,40 @@ Automatically tracks daily USD exchange rates to **BDT, INR, CNY, EUR, CAD, AUD*
 <!-- EXCHANGE-RATE-START -->
 ## 💱 Multi-Currency USD Exchange Rates
 
-**Last Updated:** 2026-06-14  
+**Last Updated:** 2026-06-14
 
-### Current Rates
-- **1 USD = 122.9387 BDT** (Bangladesh Taka)
-- **1 USD = 95.2997 INR** (Indian Rupee)
-- **1 USD = 6.7817 CNY** (Chinese Yuan)
-- **1 USD = 0.8645 EUR** (Euro)
-- **1 USD = 1.3982 CAD** (Canadian Dollar)
-- **1 USD = 1.4203 AUD** (Australian Dollar)
+### Bangladesh Taka (BDT)
+**1 USD = 122.9387 BDT**
 
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;"><circle cx="50" cy="50" r="4" fill="#3b82f6"/><polyline points="50,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to BDT - 30 Days Trend</text></svg>
 
-### 30-Day Trend Charts
+### Indian Rupee (INR)
+**1 USD = 95.2997 INR**
 
-#### Bangladesh Taka (BDT)
-<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa; border:1px solid #ddd; border-radius:8px;">
-  <defs>
-    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#3b82f6"/>
-      <stop offset="100%" stop-color="#1e40af"/>
-    </linearGradient>
-  </defs>
-  
-  <!-- Grid lines -->
-  <line x1="50" y1="50" x2="750" y2="50" stroke="#e5e7eb" stroke-width="1"/>
-  <line x1="50" y1="250" x2="750" y2="250" stroke="#e5e7eb" stroke-width="1"/>
-<text x="40" y="54" text-anchor="end" font-size="12" fill="#666">122.94</text>
-<text x="40" y="94" text-anchor="end" font-size="12" fill="#666">122.74</text>
-<text x="40" y="134" text-anchor="end" font-size="12" fill="#666">122.54</text>
-<text x="40" y="174" text-anchor="end" font-size="12" fill="#666">122.34</text>
-<text x="40" y="214" text-anchor="end" font-size="12" fill="#666">122.14</text>
-<text x="40" y="254" text-anchor="end" font-size="12" fill="#666">121.94</text>
-<circle cx="50" cy="50" r="3" fill="#3b82f6" stroke="#fff" stroke-width="2"/>
-<polyline points="50,50" fill="none" stroke="url(#lineGradient)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;"><circle cx="50" cy="50" r="4" fill="#3b82f6"/><polyline points="50,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to INR - 30 Days Trend</text></svg>
 
-  <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">USD to BDT - Last 30 Days Trend</text>
-  <text x="400" y="285" text-anchor="middle" font-size="12" fill="#666">Date →</text>
-</svg>
+### Chinese Yuan (CNY)
+**1 USD = 6.7817 CNY**
 
-#### Indian Rupee (INR)
-<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa; border:1px solid #ddd; border-radius:8px;">
-  <defs>
-    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#3b82f6"/>
-      <stop offset="100%" stop-color="#1e40af"/>
-    </linearGradient>
-  </defs>
-  
-  <!-- Grid lines -->
-  <line x1="50" y1="50" x2="750" y2="50" stroke="#e5e7eb" stroke-width="1"/>
-  <line x1="50" y1="250" x2="750" y2="250" stroke="#e5e7eb" stroke-width="1"/>
-<text x="40" y="54" text-anchor="end" font-size="12" fill="#666">95.30</text>
-<text x="40" y="94" text-anchor="end" font-size="12" fill="#666">95.10</text>
-<text x="40" y="134" text-anchor="end" font-size="12" fill="#666">94.90</text>
-<text x="40" y="174" text-anchor="end" font-size="12" fill="#666">94.70</text>
-<text x="40" y="214" text-anchor="end" font-size="12" fill="#666">94.50</text>
-<text x="40" y="254" text-anchor="end" font-size="12" fill="#666">94.30</text>
-<circle cx="50" cy="50" r="3" fill="#3b82f6" stroke="#fff" stroke-width="2"/>
-<polyline points="50,50" fill="none" stroke="url(#lineGradient)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;"><circle cx="50" cy="50" r="4" fill="#3b82f6"/><polyline points="50,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to CNY - 30 Days Trend</text></svg>
 
-  <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">USD to INR - Last 30 Days Trend</text>
-  <text x="400" y="285" text-anchor="middle" font-size="12" fill="#666">Date →</text>
-</svg>
+### Euro (EUR)
+**1 USD = 0.8645 EUR**
 
-#### Chinese Yuan (CNY)
-<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa; border:1px solid #ddd; border-radius:8px;">
-  <defs>
-    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#3b82f6"/>
-      <stop offset="100%" stop-color="#1e40af"/>
-    </linearGradient>
-  </defs>
-  
-  <!-- Grid lines -->
-  <line x1="50" y1="50" x2="750" y2="50" stroke="#e5e7eb" stroke-width="1"/>
-  <line x1="50" y1="250" x2="750" y2="250" stroke="#e5e7eb" stroke-width="1"/>
-<text x="40" y="54" text-anchor="end" font-size="12" fill="#666">6.78</text>
-<text x="40" y="94" text-anchor="end" font-size="12" fill="#666">6.58</text>
-<text x="40" y="134" text-anchor="end" font-size="12" fill="#666">6.38</text>
-<text x="40" y="174" text-anchor="end" font-size="12" fill="#666">6.18</text>
-<text x="40" y="214" text-anchor="end" font-size="12" fill="#666">5.98</text>
-<text x="40" y="254" text-anchor="end" font-size="12" fill="#666">5.78</text>
-<circle cx="50" cy="50" r="3" fill="#3b82f6" stroke="#fff" stroke-width="2"/>
-<polyline points="50,50" fill="none" stroke="url(#lineGradient)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;"><circle cx="50" cy="50" r="4" fill="#3b82f6"/><polyline points="50,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to EUR - 30 Days Trend</text></svg>
 
-  <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">USD to CNY - Last 30 Days Trend</text>
-  <text x="400" y="285" text-anchor="middle" font-size="12" fill="#666">Date →</text>
-</svg>
+### Canadian Dollar (CAD)
+**1 USD = 1.3982 CAD**
 
-#### Euro (EUR)
-<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa; border:1px solid #ddd; border-radius:8px;">
-  <defs>
-    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#3b82f6"/>
-      <stop offset="100%" stop-color="#1e40af"/>
-    </linearGradient>
-  </defs>
-  
-  <!-- Grid lines -->
-  <line x1="50" y1="50" x2="750" y2="50" stroke="#e5e7eb" stroke-width="1"/>
-  <line x1="50" y1="250" x2="750" y2="250" stroke="#e5e7eb" stroke-width="1"/>
-<text x="40" y="54" text-anchor="end" font-size="12" fill="#666">0.86</text>
-<text x="40" y="94" text-anchor="end" font-size="12" fill="#666">0.66</text>
-<text x="40" y="134" text-anchor="end" font-size="12" fill="#666">0.46</text>
-<text x="40" y="174" text-anchor="end" font-size="12" fill="#666">0.26</text>
-<text x="40" y="214" text-anchor="end" font-size="12" fill="#666">0.06</text>
-<text x="40" y="254" text-anchor="end" font-size="12" fill="#666">-0.14</text>
-<circle cx="50" cy="50" r="3" fill="#3b82f6" stroke="#fff" stroke-width="2"/>
-<polyline points="50,50" fill="none" stroke="url(#lineGradient)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;"><circle cx="50" cy="50" r="4" fill="#3b82f6"/><polyline points="50,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to CAD - 30 Days Trend</text></svg>
 
-  <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">USD to EUR - Last 30 Days Trend</text>
-  <text x="400" y="285" text-anchor="middle" font-size="12" fill="#666">Date →</text>
-</svg>
+### Australian Dollar (AUD)
+**1 USD = 1.4203 AUD**
 
-#### Canadian Dollar (CAD)
-<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa; border:1px solid #ddd; border-radius:8px;">
-  <defs>
-    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#3b82f6"/>
-      <stop offset="100%" stop-color="#1e40af"/>
-    </linearGradient>
-  </defs>
-  
-  <!-- Grid lines -->
-  <line x1="50" y1="50" x2="750" y2="50" stroke="#e5e7eb" stroke-width="1"/>
-  <line x1="50" y1="250" x2="750" y2="250" stroke="#e5e7eb" stroke-width="1"/>
-<text x="40" y="54" text-anchor="end" font-size="12" fill="#666">1.40</text>
-<text x="40" y="94" text-anchor="end" font-size="12" fill="#666">1.20</text>
-<text x="40" y="134" text-anchor="end" font-size="12" fill="#666">1.00</text>
-<text x="40" y="174" text-anchor="end" font-size="12" fill="#666">0.80</text>
-<text x="40" y="214" text-anchor="end" font-size="12" fill="#666">0.60</text>
-<text x="40" y="254" text-anchor="end" font-size="12" fill="#666">0.40</text>
-<circle cx="50" cy="50" r="3" fill="#3b82f6" stroke="#fff" stroke-width="2"/>
-<polyline points="50,50" fill="none" stroke="url(#lineGradient)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">USD to CAD - Last 30 Days Trend</text>
-  <text x="400" y="285" text-anchor="middle" font-size="12" fill="#666">Date →</text>
-</svg>
-
-#### Australian Dollar (AUD)
-<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa; border:1px solid #ddd; border-radius:8px;">
-  <defs>
-    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#3b82f6"/>
-      <stop offset="100%" stop-color="#1e40af"/>
-    </linearGradient>
-  </defs>
-  
-  <!-- Grid lines -->
-  <line x1="50" y1="50" x2="750" y2="50" stroke="#e5e7eb" stroke-width="1"/>
-  <line x1="50" y1="250" x2="750" y2="250" stroke="#e5e7eb" stroke-width="1"/>
-<text x="40" y="54" text-anchor="end" font-size="12" fill="#666">1.42</text>
-<text x="40" y="94" text-anchor="end" font-size="12" fill="#666">1.22</text>
-<text x="40" y="134" text-anchor="end" font-size="12" fill="#666">1.02</text>
-<text x="40" y="174" text-anchor="end" font-size="12" fill="#666">0.82</text>
-<text x="40" y="214" text-anchor="end" font-size="12" fill="#666">0.62</text>
-<text x="40" y="254" text-anchor="end" font-size="12" fill="#666">0.42</text>
-<circle cx="50" cy="50" r="3" fill="#3b82f6" stroke="#fff" stroke-width="2"/>
-<polyline points="50,50" fill="none" stroke="url(#lineGradient)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">USD to AUD - Last 30 Days Trend</text>
-  <text x="400" y="285" text-anchor="middle" font-size="12" fill="#666">Date →</text>
-</svg>
-
-
-### Summary Statistics
-| Currency | Latest Rate | Highest | Lowest | Average | Records |
-|----------|-------------|---------|--------|---------|---------|
-| BDT | 122.9387 | 122.9387 | 122.9387 | 122.9387 | 1 |
-| INR | 95.2997 | 95.2997 | 95.2997 | 95.2997 | 1 |
-| CNY | 6.7817 | 6.7817 | 6.7817 | 6.7817 | 1 |
-| EUR | 0.8645 | 0.8645 | 0.8645 | 0.8645 | 1 |
-| CAD | 1.3982 | 1.3982 | 1.3982 | 1.3982 | 1 |
-| AUD | 1.4203 | 1.4203 | 1.4203 | 1.4203 | 1 |
-
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;"><circle cx="50" cy="50" r="4" fill="#3b82f6"/><polyline points="50,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold">USD to AUD - 30 Days Trend</text></svg>
 
 **Project Status:** Active ✅
 
-*Data automatically updated daily via GitHub Actions. Supports BDT, INR, CNY, EUR, CAD, AUD.*
 <!-- EXCHANGE-RATE-END -->
 
 ## Project Structure
