@@ -1,8 +1,8 @@
-# Daily USD to BDT Exchange Rate Tracker
+# Daily Multi-Currency USD Exchange Rate Tracker
 
 [![GitHub Workflow Status](https://github.com/yourusername/daily-usd-to-bdt-tracker/actions/workflows/update-rate.yml/badge.svg)](https://github.com/yourusername/daily-usd-to-bdt-tracker/actions)
 
-Automatically tracks the daily USD to BDT exchange rate using a free public API and GitHub Actions. Historical data is stored in JSON and CSV formats, with automatic README updates.
+Automatically tracks daily USD exchange rates to **BDT, INR, CNY, EUR, CAD, AUD** using a free public API and GitHub Actions. Historical data per currency + beautiful dashboards.
 
 ## Features
 
@@ -11,27 +11,30 @@ Automatically tracks the daily USD to BDT exchange rate using a free public API 
 - **Data Persistence**: Stores historical rates in `data/history.json` and `data/history.csv`
 - **Duplicate Prevention**: Updates existing day's entry if rerun
 - **Statistics**: Calculates highest, lowest, average rates, and more
-- **README Updates**: Dynamically updates project dashboard
+- **README Updates**: Dynamically updates project dashboard + 30-day SVG trend chart
+- **GitHub Pages Dashboard**: Live interactive historical rate dashboard at `https://yourusername.github.io/daily-usd-to-bdt-tracker/`
 - **Manual Trigger**: Can be run manually from GitHub UI
 - **Error Handling & Logging**: Robust script with detailed console output
 - **Skip Empty Commits**: Only commits when there are changes
 
 <!-- EXCHANGE-RATE-START -->
+
 ## USD → BDT Daily Tracker
 
-**Last Updated:** 2026-06-14  
-**Current Rate:** 1 USD = 122.9387 BDT  
+**Last Updated:** 2026-06-15  
+**Current Rate:** 1 USD = 122.45 BDT  
 
 ### Statistics
-- **Total Historical Records:** 2
-- **Highest Rate:** 122.9387 BDT
+- **Total Historical Records:** 1
+- **Highest Rate:** 122.45 BDT
 - **Lowest Rate:** 122.45 BDT
-- **Average Rate:** 122.6944 BDT
+- **Average Rate:** 122.45 BDT
 - **Latest Rate:** 122.45 BDT
 
 **Project Status:** Active ✅
 
 *Data automatically updated daily via GitHub Actions.*
+
 <!-- EXCHANGE-RATE-END -->
 
 ## Project Structure
@@ -42,9 +45,15 @@ daily-usd-to-bdt-tracker/
 ├── package.json              # Node.js dependencies and scripts
 ├── .gitignore                # Git ignore rules
 ├── update-rate.js            # Main automation script
+├── index.html                # GitHub Pages dashboard
 ├── data/
-│   ├── history.json          # Historical data (JSON)
-│   └── history.csv           # Historical data (CSV)
+│   ├── history-bdt.json
+│   ├── history-inr.json
+│   ├── history-cny.json
+│   ├── history-eur.json
+│   ├── history-cad.json
+│   ├── history-aud.json
+│   └── ... (corresponding .csv files)
 └── .github/
     └── workflows/
         └── update-rate.yml   # GitHub Actions workflow
@@ -77,6 +86,18 @@ The workflow is already configured in `.github/workflows/update-rate.yml`.
 - **Permissions**: `contents: write` for auto-commits
 
 No additional setup required after pushing to GitHub.
+
+## GitHub Pages Setup (Live Dashboard)
+
+1. Go to your repository **Settings** → **Pages**
+2. Under **Source**, select **Deploy from a branch**
+3. Choose **main** branch and **/(root)** folder
+4. Click **Save**
+
+Your live dashboard will be available at:  
+`https://yourusername.github.io/daily-usd-to-bdt-tracker/`
+
+The `index.html` is automatically generated and updated daily with the latest chart and data.
 
 ## Workflow Explanation
 

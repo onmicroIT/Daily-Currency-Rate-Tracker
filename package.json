@@ -1,7 +1,7 @@
 {
-  "name": "daily-usd-to-bdt-tracker",
-  "version": "1.0.0",
-  "description": "Daily USD to BDT Exchange Rate Tracker with GitHub Actions automation",
+  "name": "daily-multi-currency-usd-tracker",
+  "version": "2.0.0",
+  "description": "Daily USD to Multiple Currencies (BDT, INR, CNY, EUR, CAD, AUD) Exchange Rate Tracker with GitHub Actions",
   "main": "update-rate.js",
   "type": "module",
   "scripts": {
