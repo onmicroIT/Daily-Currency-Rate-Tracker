@@ -17,23 +17,21 @@ Automatically tracks the daily USD to BDT exchange rate using a free public API 
 - **Skip Empty Commits**: Only commits when there are changes
 
 <!-- EXCHANGE-RATE-START -->
-
 ## USD → BDT Daily Tracker
 
-**Last Updated:** 2026-06-15  
-**Current Rate:** 1 USD = 122.45 BDT  
+**Last Updated:** 2026-06-14  
+**Current Rate:** 1 USD = 122.9387 BDT  
 
 ### Statistics
-- **Total Historical Records:** 1
-- **Highest Rate:** 122.45 BDT
+- **Total Historical Records:** 2
+- **Highest Rate:** 122.9387 BDT
 - **Lowest Rate:** 122.45 BDT
-- **Average Rate:** 122.45 BDT
+- **Average Rate:** 122.6944 BDT
 - **Latest Rate:** 122.45 BDT
 
 **Project Status:** Active ✅
 
 *Data automatically updated daily via GitHub Actions.*
-
 <!-- EXCHANGE-RATE-END -->
 
 ## Project Structure
