@@ -1,0 +1,23 @@
+{
+  "name": "daily-usd-to-bdt-tracker",
+  "version": "1.0.0",
+  "description": "Daily USD to BDT Exchange Rate Tracker with GitHub Actions automation",
+  "main": "update-rate.js",
+  "type": "module",
+  "scripts": {
+    "start": "node update-rate.js",
+    "update": "node update-rate.js"
+  },
+  "keywords": [
+    "exchange-rate",
+    "usd",
+    "bdt",
+    "github-actions",
+    "automation"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  }
+}
