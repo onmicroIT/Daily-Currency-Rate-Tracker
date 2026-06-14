@@ -143,14 +143,28 @@ async function updateReadme(allStats, today) {
   const end = '<!-- EXCHANGE-RATE-END -->';
   
   let section = `\n## 💱 Multi-Currency USD Exchange Rates\n\n**Last Updated:** ${today}\n\n`;
-  
+
+  // === SUMMARY TABLE ===
+  section += `### 📊 Current Rates Summary\n\n`;
+  section += `| Currency | Code | Current Rate (1 USD) | 30-Day High | 30-Day Low | Average |\n`;
+  section += `|----------|------|----------------------|-------------|------------|---------|\n`;
+
   for (const [code, data] of Object.entries(allStats)) {
-    section += `### ${data.currency.name} (${code})\n**1 USD = ${data.rate} ${code}**\n\n`;
-    section += generateTrendSVG(data.history, code) + '\n\n';
+    const stats = data.stats;
+    section += `| ${data.currency.name} | ${code} | **${data.rate}** | ${stats.highestRate} | ${stats.lowestRate} | ${stats.averageRate} |\n`;
+  }
+  section += `\n`;
+
+  // === INDIVIDUAL CHARTS ===
+  section += `### 📈 30-Day Trend Charts\n\n`;
+  for (const [code, data] of Object.entries(allStats)) {
+    section += `#### ${data.currency.name} (${code})\n`;
+    section += `**Current Rate:** 1 USD = **${data.rate}** ${code}\n\n`;
+    section += generateTrendSVG(data.history, code) + `\n\n`;
   }
   
   section += `**Project Status:** Active ✅\n\n`;
-  
+
   const regex = new RegExp(`${start}[\\s\\S]*?${end}`, 'g');
   if (content.includes(start)) {
     content = content.replace(regex, `${start}${section}${end}`);
@@ -159,7 +173,7 @@ async function updateReadme(allStats, today) {
   }
   
   await fs.writeFile(README_FILE, content.trim());
-  console.log('✅ README.md updated');
+  console.log('✅ README.md updated with summary table + charts');
 }
 
 async function generateDashboard(allStats, today) {

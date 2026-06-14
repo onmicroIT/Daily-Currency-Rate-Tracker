@@ -1,4 +1,4 @@
-name: Daily USD Multi-Currency Exchange Rate Update
+name: Daily Multi-Currency USD Exchange Rate Update
 
 permissions:
   contents: write
@@ -18,13 +18,13 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: true
 
       - name: Setup Node.js 22
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '22'
           cache: 'npm'
@@ -33,9 +33,11 @@ jobs:
         run: npm ci
 
       - name: Run exchange rate update
+        id: update
         run: node update-rate.js
 
       - name: Commit and push changes
+        if: steps.update.outcome == 'success'
         run: |
           git config --global user.name "onmicroIT"
           git config --global user.email "kartik@itcommunication.onmicrosoft.com"
@@ -47,7 +49,7 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "chore: update daily exchange rate"
             git push origin main
-            echo "Changes committed"
+            echo "✅ Changes committed and pushed"
           else
-            echo "No changes to commit"
+            echo "✅ No changes to commit"
           fi
