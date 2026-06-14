@@ -37,8 +37,8 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "onmicroIT"
+          git config --global user.email "kartik@itcommunication.onmicrosoft.com"
           
           git pull origin main --rebase || true
           
